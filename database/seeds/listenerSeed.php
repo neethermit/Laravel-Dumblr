@@ -24,7 +24,7 @@ class listenerSeed extends Seeder
                 $append = '0';
                 break;
         }
-        return 'Resources/face/' . $append . $image . '.png';
+        return '/Resources/face/' . $append . $image . '.png';
     }
     
     public function run()
@@ -53,7 +53,7 @@ class listenerSeed extends Seeder
             $song->image_url = $this->getRandomImage();
             $song->name = "Musica " . $i . ',0';
             $song->author = "Autor " . $i;
-            $song->url = '/Resources/' . rand(1,148) . '.mp3';
+            $song->url = '/Resources/seed/' . rand(1,148) . '.mp3';
             $song->minutes = '3';
             $song->seconds = '0';
             $song->save();
@@ -63,7 +63,7 @@ class listenerSeed extends Seeder
             $song2->image_url = $this->getRandomImage();
             $song2->name = "Musica " . $i . ',1';
             $song2->author = "Autor " . $i;
-            $song2->url = '/Resources/' . rand(1,148) . '.mp3';
+            $song2->url = '/Resources/seed/' . rand(1,148) . '.mp3';
             $song2->minutes = '3';
             $song2->seconds = '0';
             $song2->save();
@@ -93,6 +93,17 @@ class listenerSeed extends Seeder
             $musicHasRemark->music_id = $song->id;
             $musicHasRemark->save();
             
+            $listenerFollowListener = new App\ListenerFollowListener;
+            $listenerFollowListener->follower_id = $listener->id;
+            $listenerFollowListener->followed_id = $listener->id;
+            $listenerFollowListener->save();
+            
+            if($i%2 == 0 and $i!=0){
+                $listenerFollowListener2 = new App\ListenerFollowListener;
+                $listenerFollowListener2->follower_id = $listener->id;
+                $listenerFollowListener2->followed_id = $listener->id - 1;
+                $listenerFollowListener2->save();
+            }
             
         }
         
