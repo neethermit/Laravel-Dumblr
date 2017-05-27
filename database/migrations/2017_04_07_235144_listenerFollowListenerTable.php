@@ -18,7 +18,7 @@ class ListenerFollowListenerTable extends Migration
             $table->foreign('follower_id')->references('id')->on('listener');
             $table->integer('followed_id')->unsigned();
             $table->foreign('followed_id')->references('id')->on('listener');
-            $table->boolean('erased');
+            $table->boolean('erased')->default(0);
             $table->timestamps();
             $table->primary(['follower_id','followed_id']);
         });

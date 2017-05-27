@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Classes\Utility;
 
 class listenerSeed extends Seeder
 {
@@ -10,7 +11,7 @@ class listenerSeed extends Seeder
      * @return void
      */
     
-    public function getRandomImage(){
+    /*public function getRandomImage(){
         $image = rand(1,161);
         $append = '';
         switch (mb_strlen($image)){
@@ -25,6 +26,11 @@ class listenerSeed extends Seeder
                 break;
         }
         return '/Resources/face/' . $append . $image . '.png';
+    }*/
+    
+    public function getRandomImage(){
+        $image = rand(1,189);
+        return '/Resources/face/' . $image . '.jpg';
     }
     
     public function run()
@@ -37,12 +43,21 @@ class listenerSeed extends Seeder
              'birthday' => '1997-03-30',
              'gender' => '1',
              'erased' => '0']);*/
+        $totalNames = count(Utility::$names);
         for($i = 0; $i < 50; $i++){
             
+            
+            $nameSeed = rand(1, $totalNames);
+            $surnameSeed = rand(1, $totalNames);
+            
+            $newName = Utility::generateName($nameSeed);
+            $newSurname = Utility::generateName($surnameSeed);
+            
             $listener = new App\Listener;
-            $listener->name = 'Edgar' . $i;
+            $listener->name = $newName . ' ' . $newSurname;
             $listener->image_url = $this->getRandomImage();
-            $listener->email = 'a@a.a' . $i;
+            $listener->image_profile_url = $this->getRandomImage();
+            $listener->email = strtolower($newSurname) . $i .'@gmail.com';
             $listener->password = '1';
             $listener->birthday = '1997-03-30';
             $listener->gender = '1';
@@ -53,7 +68,7 @@ class listenerSeed extends Seeder
             $song->image_url = $this->getRandomImage();
             $song->name = "Musica " . $i . ',0';
             $song->author = "Autor " . $i;
-            $song->url = '/Resources/seed/' . rand(1,148) . '.mp3';
+            $song->url = '/Resources/seed/' . rand(1,91) . '.mp3';
             $song->minutes = '3';
             $song->seconds = '0';
             $song->save();
@@ -63,7 +78,7 @@ class listenerSeed extends Seeder
             $song2->image_url = $this->getRandomImage();
             $song2->name = "Musica " . $i . ',1';
             $song2->author = "Autor " . $i;
-            $song2->url = '/Resources/seed/' . rand(1,148) . '.mp3';
+            $song2->url = '/Resources/seed/' . rand(1,91) . '.mp3';
             $song2->minutes = '3';
             $song2->seconds = '0';
             $song2->save();

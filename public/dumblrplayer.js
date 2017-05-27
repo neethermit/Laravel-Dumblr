@@ -26,30 +26,6 @@ function pixelsToSeconds(pixels,maxpixel,maxtime){
         
  
         
-    $(".trackbarview").on("mousedown",function(event){ 
-        event.preventDefault();
-        if(!trackbarfocus){
-            trackbarfocus=$(this);
-        }
-        if($(this).is(trackbarfocus)){
-        actualtrack=true}
-        else{
-            actualtrack=false;
-        }
-        mousex=event.pageX-$(this).offset().left;
-        mousedownn=true;
-        trackdown=true;
-        movebar($(this));
-        });
-        
-    $(".playerbarview").on("mousedown",function(event){
-        event.preventDefault();
-        mousex=event.pageX-$(this).offset().left;
-        mousedownn=true;
-        playerdown=true;
-        moveplayerbar();
-        });
-        
 function movediamond(barra)
         {
         barra.on("mousemove",function(e){
@@ -92,32 +68,10 @@ function moveplayerbar(){
                     }   
 }; 
        
-    $(document).on("mouseup",function(event){
-        if(mousedownn){
-            mousedownn=false;
-            if(trackdown){
-            
-            trackdown=false;
-            clearInterval(timeout);
-                
-          if(actualtrack){
-        song.currentTime = pixelsToSeconds(mousex,trackbarfocus.width(),song.duration); 
-          }
-            }
-            if(playerdown){
-                
-                playerdown=false;
-        
-        clearInterval(timeout2);
-            var barwidth= $(".player-track-remaining").width();        
-            var barwidth= $(".player-track-remaining").width();        
-        song.currentTime = pixelsToSeconds(mousex,barwidth,song.duration);
-            }
-        }
-    });
-     
+         
 
-    song = new Audio('Resources/01. Lone Digger.ogg','Resources/01. Lone Digger.mp3');
+    song = new Audio('Resources/01. Lone Digger.mp3', 'Resources/01. Lone Digger.ogg');
+//alert(song.src);
         
         if (song.canPlayType('audio/mpeg;')) {
   	song.type= 'audio/mpeg';

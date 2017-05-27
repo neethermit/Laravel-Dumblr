@@ -44,6 +44,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // La arma secreta
+        /*if(session('user') === null){
+            return redirect('/');
+        } else{
+            return back();
+        }*/
         return parent::render($request, $exception);
     }
 

@@ -84,7 +84,20 @@ position: absolute;}
 
 .profilehead{
     margin-top: 10px;
+        margin-bottom: 70px;
 }
+
+.headerphoto {
+        -webkit-clip-path: none;
+        clip-path: none;
+
+    }
+
+    .profilepic {
+        left: 50%;
+        transform: translate(-50%, 0);
+        border-width: 10px;
+    }
 
 @media (min-width: 576px) { }
 

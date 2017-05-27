@@ -18,6 +18,7 @@ class ListenerTable extends Migration
             //$table->integer('image_id')->unsigned();
             //$table->foreign('image_id')->references('id')->on('image');
             $table->string('image_url');
+            $table->string('image_profile_url');
             $table->string('name');
             $table->string('email');
             $table->unique('email');

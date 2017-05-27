@@ -115,7 +115,7 @@ hr{
     text-align: center;
     margin-top: 10px; 
     margin-bottom: 10px; 
-    font-size: 10px;
+    font-size: 8px;
     display: block;
     color: aliceblue;
     cursor: pointer; 
@@ -309,6 +309,7 @@ hr{
       padding-right: 5px;
     display:block;
     background:rgba(238, 238, 238, 0.8);   
+    max-width: 175px;
     
 }
 
@@ -430,7 +431,7 @@ margin: 0;
     color: gray;
     cursor: pointer;
     
-    margin-right: 30px;
+    margin-right: 10px;
     
 }
 a:hover{
@@ -560,7 +561,11 @@ a:hover{
     font-size: 12px;
 }
     
-     
+    
+    .trackbackground{
+    max-width: none;
+}
+
 }
 
 

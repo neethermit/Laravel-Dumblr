@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset=="UTF-8">
+    <meta charset="UTF-8">
     <meta name="robots" content="noarchive">
     <title>Dumblr</title>
     <link rel="icon" type="image/png" href="{{URL::asset('Resources/logodumblrv2.png')}}" />
@@ -66,19 +66,20 @@
 
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <form name="singup">
+            <form action="listener" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="paso1">
                     <label>Escribe tu nombre de usuario</label>
-                    <input type="text">
+                    <input name="name" type="text">
                     <br>
                     <label>Ingresa tu correo</label>
-                    <input type="text">
+                    <input name="email" type="text">
                     <br>
                     <label>Ingresa tu contrase&ntilde;a</label>
-                    <input type="text">
+                    <input name="password" type="text">
                     <br>
                     <label>Confirma tu contrase&ntilde;a</label>
-                    <input type="text">
+                    <input name="password_confirm" type="text">
                     <button type="button" id="salir" class="salir">Salir</button>
                     <button type="button" class="btnPaso1">Siguiente</button>
                 </div>
@@ -199,8 +200,8 @@
                     </select>
                     <label>Genero</label>
                     <br>
-                    <input type="radio" name="gender">Masculino
-                    <input type="radio" name="gender"> Femenino
+                    <input type="radio" name="gender" value="1">Masculino
+                    <input type="radio" name="gender" value="0"> Femenino
                     <label>Subir foto de perfil</label>
                     <br>
                     <div style="display:flex">
@@ -212,7 +213,7 @@
                     </div>
                     <br>
                     <button type="button" id="anterior" class="anterior">Anterior</button>
-                    <button type="button" class="btnPaso1">Terminar</button>
+                    <button type="submit" class="btnPaso1">Terminar</button>
                 </div>
             </form>
         </div>
